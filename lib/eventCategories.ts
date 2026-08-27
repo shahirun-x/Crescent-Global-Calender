@@ -83,3 +83,16 @@ export const eventCategoryColor: Record<
 
 export const catDot = (c: EventCategory) => eventCategoryColor[c].dot;
 export const catGlow = (c: EventCategory) => eventCategoryColor[c].glow;
+
+/** Full `border-l-*` class per category — for the event-card accent border. */
+export const eventCategoryBorderL: Record<EventCategory, string> = {
+  Schools: "border-l-sky-500",
+  Colleges: "border-l-indigo-500",
+  University: "border-l-blue-600",
+  Healthcare: "border-l-emerald-500",
+  Alumni: "border-l-amber-500",
+  Community: "border-l-orange-500",
+  Sports: "border-l-lime-600",
+  Cultural: "border-l-fuchsia-500",
+  Conferences: "border-l-violet-500",
+};

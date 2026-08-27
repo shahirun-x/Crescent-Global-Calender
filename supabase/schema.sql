@@ -18,6 +18,8 @@ create table if not exists public.institutions (
   description     text not null default '',
   external_url    text not null default '',
   logo_url        text,
+  latitude        double precision,
+  longitude       double precision,
   sort_order      integer not null default 0,
   created_at      timestamptz not null default now()
 );

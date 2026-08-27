@@ -21,6 +21,8 @@ export interface Institution {
   description: string;
   external_url: string;
   logo_url: string | null;
+  latitude: number | null;
+  longitude: number | null;
   sort_order: number;
 }
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import { formatDateRange } from "@/lib/site";
+import { eventCategoryBorderL } from "@/lib/eventCategories";
 import type { CrescentEvent } from "@/lib/types";
 
 export default function EventsStrip({ events }: { events: CrescentEvent[] }) {
@@ -31,7 +32,9 @@ export default function EventsStrip({ events }: { events: CrescentEvent[] }) {
         <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {list.map((e, idx) => (
             <Reveal key={e.id} as="li" delay={idx * 0.05}>
-              <article className="flex h-full flex-col rounded-card border border-slate-200 bg-white p-5">
+              <article
+                className={`flex h-full flex-col rounded-card border border-l-4 border-slate-200 bg-white p-5 ${eventCategoryBorderL[e.category]}`}
+              >
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-crescent-600">
                   <time dateTime={e.date_start}>
                     {formatDateRange(e.date_start, e.date_end)}

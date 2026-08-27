@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
-import { categoryMeta } from "@/lib/site";
+import { categoryMeta, institutionCategoryStyle } from "@/lib/site";
 import type { Institution } from "@/lib/types";
 
 const order = ["education", "healthcare", "community", "innovation"] as const;
@@ -38,7 +38,7 @@ export default function EcosystemGrid({
           <Reveal key={cat} delay={idx * 0.06} as="article">
             <Link
               href={`/institutions?category=${cat}`}
-              className="group flex h-full flex-col rounded-card border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-crescent-300 hover:shadow-lg hover:shadow-crescent-900/5"
+              className={`group flex h-full flex-col rounded-card border border-slate-200 p-6 transition-all hover:-translate-y-0.5 hover:border-crescent-300 hover:shadow-lg hover:shadow-crescent-900/5 ${institutionCategoryStyle[cat].cardGradient}`}
             >
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-crescent-50 text-crescent-700">
                 <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">

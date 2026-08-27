@@ -41,6 +41,42 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
+/**
+ * One visual identity per institution category, reused by the map markers, the
+ * institution-card header bars and the ecosystem pillar cards. `hex` is for
+ * Leaflet (inline SVG/CSS); the rest are full Tailwind class strings.
+ */
+export const institutionCategoryStyle: Record<
+  "education" | "healthcare" | "community" | "innovation",
+  { hex: string; bar: string; cardGradient: string }
+> = {
+  education: {
+    hex: "#2563eb",
+    bar: "bg-blue-600",
+    cardGradient: "bg-gradient-to-br from-blue-50/80 to-white",
+  },
+  healthcare: {
+    hex: "#10b981",
+    bar: "bg-emerald-500",
+    cardGradient: "bg-gradient-to-br from-emerald-50/80 to-white",
+  },
+  community: {
+    hex: "#f97316",
+    bar: "bg-orange-500",
+    cardGradient: "bg-gradient-to-br from-orange-50/80 to-white",
+  },
+  innovation: {
+    hex: "#8b5cf6",
+    bar: "bg-violet-500",
+    cardGradient: "bg-gradient-to-br from-violet-50/80 to-white",
+  },
+};
+
+export const MAP_TILE_URL =
+  "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png";
+export const MAP_TILE_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>';
+
 export const categoryMeta: Record<
   string,
   { label: string; blurb: string }

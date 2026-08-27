@@ -28,6 +28,8 @@ export const INSTITUTIONS: Institution[] = [
       "The founding institution of the Crescent movement — a residential matriculation school in Chennai that has shaped generations of students since 1967.",
     external_url: "https://www.crescentschools.edu.in", // TODO verify
     logo_url: null,
+    latitude: 13.0475,
+    longitude: 80.209,
     sort_order: 1,
   },
   {
@@ -41,6 +43,8 @@ export const INSTITUTIONS: Institution[] = [
       "A matriculation school for girls in Chennai, extending the Crescent commitment to accessible, values-based education for young women.",
     external_url: "https://www.crescentschools.edu.in", // TODO verify
     logo_url: null,
+    latitude: 13.048,
+    longitude: 80.2085,
     sort_order: 2,
   },
   {
@@ -54,6 +58,8 @@ export const INSTITUTIONS: Institution[] = [
       "A deemed-to-be university offering engineering, sciences, management, law and Islamic studies, and the academic anchor of the Crescent ecosystem.",
     external_url: "https://crescent.education",
     logo_url: null,
+    latitude: 12.8231,
+    longitude: 80.0424,
     sort_order: 3,
   },
   {
@@ -67,6 +73,8 @@ export const INSTITUTIONS: Institution[] = [
       "A technology business incubator supporting student and community startups with mentoring, prototyping facilities and seed funding.",
     external_url: "https://ciic.io", // TODO verify
     logo_url: null,
+    latitude: 12.8235,
+    longitude: 80.0428,
     sort_order: 4,
   },
   {
@@ -80,6 +88,8 @@ export const INSTITUTIONS: Institution[] = [
       "An arts and science college for women in the coastal town of Kilakarai, widening access to higher education in the Ramanathapuram region.",
     external_url: "https://tbak.ac.in", // TODO verify
     logo_url: null,
+    latitude: 9.2312,
+    longitude: 78.7834,
     sort_order: 5,
   },
   {
@@ -93,6 +103,8 @@ export const INSTITUTIONS: Institution[] = [
       "A CBSE school in Kilakarai providing structured, English-medium schooling to children across the region.",
     external_url: "", // no standalone website — run by the Seethakathi Trust
     logo_url: null,
+    latitude: 9.232,
+    longitude: 78.784,
     sort_order: 6,
   },
   {
@@ -106,6 +118,8 @@ export const INSTITUTIONS: Institution[] = [
       "A multi-speciality hospital serving Kilakarai and surrounding villages, part of the Crescent commitment to community healthcare.",
     external_url: "", // no official website — search fallback
     logo_url: null,
+    latitude: 9.2315,
+    longitude: 78.783,
     sort_order: 7,
   },
   {
@@ -119,6 +133,8 @@ export const INSTITUTIONS: Institution[] = [
       "A co-educational school on the Vandalur campus offering both CBSE and Cambridge IGCSE curricula.",
     external_url: "https://www.crescentschools.edu.in", // TODO verify
     logo_url: null,
+    latitude: 12.824,
+    longitude: 80.043,
     sort_order: 8,
   },
   {
@@ -132,6 +148,8 @@ export const INSTITUTIONS: Institution[] = [
       "A teacher-education college in Madurai preparing qualified educators for schools across Tamil Nadu.",
     external_url: "https://crescentcollegeofeducation.in",
     logo_url: null,
+    latitude: 9.9252,
+    longitude: 78.1198,
     sort_order: 9,
   },
   {
@@ -145,6 +163,8 @@ export const INSTITUTIONS: Institution[] = [
       "A nursing school in Madurai training healthcare professionals for hospitals and community health programmes.",
     external_url: "https://crescentschoolofnursing.in",
     logo_url: null,
+    latitude: 9.926,
+    longitude: 78.1195,
     sort_order: 10,
   },
   {
@@ -158,6 +178,8 @@ export const INSTITUTIONS: Institution[] = [
       "An Arabic and Islamic studies college in Chennai offering the traditional Aalim course alongside modern subjects.",
     external_url: "http://albukhari.in",
     logo_url: null,
+    latitude: 13.047,
+    longitude: 80.2095,
     sort_order: 11,
   },
   {
@@ -171,6 +193,8 @@ export const INSTITUTIONS: Institution[] = [
       "A Crescent school serving families in and around Madurai with a broad, activity-rich curriculum.",
     external_url: "", // no dedicated website — search fallback
     logo_url: null,
+    latitude: 9.9255,
+    longitude: 78.12,
     sort_order: 12,
   },
   {
@@ -184,6 +208,8 @@ export const INSTITUTIONS: Institution[] = [
       "A Crescent school in the coastal town of Nagore, extending the network's reach along the Coromandel coast.",
     external_url: "", // no dedicated website — search fallback
     logo_url: null,
+    latitude: 10.824,
+    longitude: 79.842,
     sort_order: 13,
   },
   {
@@ -197,6 +223,8 @@ export const INSTITUTIONS: Institution[] = [
       "A matriculation school in Kilakarai offering affordable, quality schooling with a focus on foundational learning.",
     external_url: "http://www.pearlschool.ac.in",
     logo_url: null,
+    latitude: 9.2318,
+    longitude: 78.7838,
     sort_order: 14,
   },
   {
@@ -210,6 +238,8 @@ export const INSTITUTIONS: Institution[] = [
       "Residential children's homes, orphan care, scholarships and welfare programmes run under the Crescent umbrella for underprivileged families.",
     external_url: "", // umbrella of programmes — no single website
     logo_url: null,
+    latitude: 9.2325,
+    longitude: 78.7845,
     sort_order: 15,
   },
 ];

@@ -5,6 +5,7 @@ import EventsStrip from "@/components/EventsStrip";
 import Timeline from "@/components/Timeline";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import InstitutionMapCard from "@/components/InstitutionMapCard";
 import { getEvents, getInstitutions, getTimeline } from "@/lib/data";
 
 export const revalidate = 3600;
@@ -40,6 +41,22 @@ export default async function HomePage() {
       <Hero />
 
       <EcosystemGrid institutions={institutions} />
+
+      <section className="border-t border-slate-200 bg-white py-20">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Our Presence"
+            title="Our Presence Across Tamil Nadu"
+            description="From Chennai to Kilakarai — institutions serving communities across the state."
+          />
+          <div className="mt-10">
+            <InstitutionMapCard
+              institutions={institutions}
+              className="h-[350px] md:h-[450px]"
+            />
+          </div>
+        </div>
+      </section>
 
       <EventsStrip events={events} />
 

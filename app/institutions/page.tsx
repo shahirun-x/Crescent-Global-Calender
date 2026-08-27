@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import InstitutionsExplorer from "@/components/InstitutionsExplorer";
+import InstitutionMapCard from "@/components/InstitutionMapCard";
 import { getInstitutions } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default async function InstitutionsPage() {
         description="This directory is a guide, not a replacement — each card links out to the institution's own website. Filter by pillar or search by place."
       />
       <div className="container-page py-14">
-        <InstitutionsExplorer institutions={institutions} />
+        <InstitutionMapCard institutions={institutions} className="h-[400px]" />
+        <div className="mt-12">
+          <InstitutionsExplorer institutions={institutions} />
+        </div>
       </div>
     </>
   );
