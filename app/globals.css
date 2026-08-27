@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crescent-50: #eef3fb;
+  --color-crescent-100: #d6e2f5;
+  --color-crescent-200: #adc4ea;
+  --color-crescent-300: #7fa1db;
+  --color-crescent-400: #4f79c6;
+  --color-crescent-500: #2f57a6;
+  --color-crescent-600: #234488;
+  --color-crescent-700: #1a3a6b;
+  --color-crescent-800: #142d54;
+  --color-crescent-900: #0f2140;
+  --color-crescent-950: #091428;
+
+  --color-accent-500: #d7263d;
+  --color-accent-600: #b71d31;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 1rem;
+}
+
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #0f2140;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-crescent-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
