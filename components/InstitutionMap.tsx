@@ -17,6 +17,7 @@ import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import {
   MAP_TILE_ATTRIBUTION,
+  MAP_TILE_SUBDOMAINS,
   MAP_TILE_URL,
   institutionCategoryStyle,
 } from "@/lib/site";
@@ -243,7 +244,7 @@ export default function InstitutionMap({
         <TileLayer
           url={MAP_TILE_URL}
           attribution={MAP_TILE_ATTRIBUTION}
-          subdomains={["a", "b", "c", "d"]}
+          subdomains={MAP_TILE_SUBDOMAINS}
         />
         <ZoomWatcher onZoom={setZoom} />
         <GestureManager onHint={setHint} />

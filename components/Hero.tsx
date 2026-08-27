@@ -11,13 +11,14 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-crescent-900 text-white">
+      {/* z-0: parallax background photo */}
       <motion.div
         style={{ y }}
         aria-hidden
-        className="absolute inset-x-0 -top-24 h-[calc(100%+12rem)]"
+        className="absolute inset-x-0 -top-24 z-0 h-[calc(100%+12rem)]"
       >
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c476?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80"
           alt=""
           fill
           priority
@@ -25,17 +26,18 @@ export default function Hero() {
           className="object-cover"
         />
       </motion.div>
-      {/* Dim the photo so white text stays readable */}
-      <div aria-hidden className="absolute inset-0 bg-crescent-900/80" />
+      {/* z-10: dim the photo so white text stays readable */}
+      <div aria-hidden className="absolute inset-0 z-10 bg-crescent-900/80" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-30"
+        className="pointer-events-none absolute inset-0 z-10 opacity-30"
         style={{
           backgroundImage:
             "radial-gradient(60rem 30rem at 15% -10%, rgba(255,255,255,0.25), transparent), radial-gradient(40rem 24rem at 110% 20%, rgba(215,38,61,0.35), transparent)",
         }}
       />
-      <div className="container-page relative z-10 grid gap-10 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      {/* z-20: content */}
+      <div className="container-page relative z-20 grid gap-10 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div>
           <p className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
             The Crescent ecosystem, unified

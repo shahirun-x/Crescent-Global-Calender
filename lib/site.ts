@@ -72,8 +72,12 @@ export const institutionCategoryStyle: Record<
   },
 };
 
+// Free, no-API-key dark tiles from CARTO's current basemap CDN. The old
+// `cartodb-basemaps-*.global.ssl.fastly.net` endpoint is deprecated and now
+// serves an "API KEY REQUIRED" watermark — `{s}.basemaps.cartocdn.com` does not.
 export const MAP_TILE_URL =
-  "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png";
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+export const MAP_TILE_SUBDOMAINS = ["a", "b", "c", "d"];
 export const MAP_TILE_ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>';
 
