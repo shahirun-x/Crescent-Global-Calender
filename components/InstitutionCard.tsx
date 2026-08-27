@@ -30,7 +30,7 @@ export default function InstitutionCard({ inst }: { inst: Institution }) {
         rel="noopener noreferrer"
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-crescent-600 transition-colors hover:text-crescent-800"
       >
-        {hasSite ? "Visit official website" : "Find this institution"}
+        {hasSite ? "Visit official website" : "Search online"}
         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M7 17 17 7M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

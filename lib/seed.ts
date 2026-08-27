@@ -11,7 +11,9 @@ import type {
  * mirrored in `supabase/schema.sql` for teams that want a live database.
  *
  * External URLs marked with `// TODO verify` are best-effort and should be
- * confirmed against each institution's official website by an editor.
+ * confirmed against each institution's official website by an editor. Where
+ * `external_url` is an empty string the institution has no public website of its
+ * own and the UI falls back to a web search ("Search online").
  */
 
 export const INSTITUTIONS: Institution[] = [
@@ -89,7 +91,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A CBSE school in Kilakarai providing structured, English-medium schooling to children across the region.",
-    external_url: "", // TODO add official site
+    external_url: "", // no standalone website — run by the Seethakathi Trust
     logo_url: null,
     sort_order: 6,
   },
@@ -98,11 +100,11 @@ export const INSTITUTIONS: Institution[] = [
     name: "Yousuf Zulaikha Hospital",
     location: "Kilakarai, Ramanathapuram",
     city: "Kilakarai",
-    established_year: null,
+    established_year: 1987,
     category: "healthcare",
     description:
       "A multi-speciality hospital serving Kilakarai and surrounding villages, part of the Crescent commitment to community healthcare.",
-    external_url: "", // TODO add official site
+    external_url: "", // no official website — search fallback
     logo_url: null,
     sort_order: 7,
   },
@@ -128,7 +130,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A teacher-education college in Madurai preparing qualified educators for schools across Tamil Nadu.",
-    external_url: "", // TODO add official site
+    external_url: "https://crescentcollegeofeducation.in",
     logo_url: null,
     sort_order: 9,
   },
@@ -141,7 +143,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "healthcare",
     description:
       "A nursing school in Madurai training healthcare professionals for hospitals and community health programmes.",
-    external_url: "", // TODO add official site
+    external_url: "https://crescentschoolofnursing.in",
     logo_url: null,
     sort_order: 10,
   },
@@ -154,7 +156,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "An Arabic and Islamic studies college in Chennai offering the traditional Aalim course alongside modern subjects.",
-    external_url: "", // TODO add official site
+    external_url: "http://albukhari.in",
     logo_url: null,
     sort_order: 11,
   },
@@ -167,7 +169,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A Crescent school serving families in and around Madurai with a broad, activity-rich curriculum.",
-    external_url: "", // TODO add official site
+    external_url: "", // no dedicated website — search fallback
     logo_url: null,
     sort_order: 12,
   },
@@ -180,7 +182,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A Crescent school in the coastal town of Nagore, extending the network's reach along the Coromandel coast.",
-    external_url: "", // TODO add official site
+    external_url: "", // no dedicated website — search fallback
     logo_url: null,
     sort_order: 13,
   },
@@ -193,7 +195,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A matriculation school in Kilakarai offering affordable, quality schooling with a focus on foundational learning.",
-    external_url: "", // TODO add official site
+    external_url: "http://www.pearlschool.ac.in",
     logo_url: null,
     sort_order: 14,
   },
@@ -206,7 +208,7 @@ export const INSTITUTIONS: Institution[] = [
     category: "community",
     description:
       "Residential children's homes, orphan care, scholarships and welfare programmes run under the Crescent umbrella for underprivileged families.",
-    external_url: "", // TODO add official site
+    external_url: "", // umbrella of programmes — no single website
     logo_url: null,
     sort_order: 15,
   },

@@ -1,6 +1,9 @@
+// Production URL. `NEXT_PUBLIC_SITE_URL` overrides this (e.g. for preview
+// deployments or a custom domain); the hardcoded fallback guarantees canonical
+// and OG tags always resolve to the live site even when the env var is missing.
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+  "https://crescent-global-calender.vercel.app";
 
 export const site = {
   name: "Crescent Global",
