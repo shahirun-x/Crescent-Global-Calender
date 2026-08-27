@@ -24,6 +24,12 @@ export default async function CalendarPage() {
         description="A single view of what's happening across the Crescent family. Institutions publish here so events don't clash and every campus can take part."
       />
       <div className="container-page py-14">
+        {/*
+          CalendarExplorer is the unified client system: the interactive
+          month/week <Calendar> overview sits directly above the event
+          detail list and both share one set of filters, time range and
+          day selection.
+        */}
         <CalendarExplorer events={events} />
       </div>
     </>
