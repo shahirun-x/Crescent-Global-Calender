@@ -1,9 +1,26 @@
-// Production URL. `NEXT_PUBLIC_SITE_URL` overrides this (e.g. for preview
-// deployments or a custom domain); the hardcoded fallback guarantees canonical
-// and OG tags always resolve to the live site even when the env var is missing.
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://crescent-global-calender.vercel.app";
+const PRODUCTION_URL = "https://crescent-global-calender.vercel.app";
+
+// Resolve the public site URL. `NEXT_PUBLIC_SITE_URL` overrides the production
+// default (for a custom domain or a preview deployment), but only when it holds
+// a real, non-localhost value. This is deliberately defensive:
+//   * `.trim() || fallback` catches an env var that is present but empty or
+//     whitespace-only (Vercel stores such a value as "" rather than undefined,
+//     so a bare `process.env.X || fallback` would still yield "" — falsy, but a
+//     `.replace()` chained onto `undefined` would have thrown instead).
+//   * the localhost guard stops a stray `http://localhost:3000` (e.g. copied
+//     from .env.example into the Vercel dashboard) from poisoning canonical and
+//     OG tags on the live site.
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return PRODUCTION_URL;
+  const normalized = raw.replace(/\/+$/, "");
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(normalized)) {
+    return PRODUCTION_URL;
+  }
+  return normalized;
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 export const site = {
   name: "Crescent Global",
