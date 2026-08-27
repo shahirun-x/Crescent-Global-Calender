@@ -10,7 +10,7 @@ import {
   startOfDay,
   toISODate,
 } from "@/lib/dates";
-import { catDot, eventCategoryColor } from "@/lib/eventCategories";
+import { catDot, catGlow, eventCategoryColor } from "@/lib/eventCategories";
 import type { CrescentEvent } from "@/lib/types";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -41,6 +41,23 @@ function useIsMobile() {
     return () => mq.removeEventListener("change", sync);
   }, []);
   return mobile;
+}
+
+/** Tooltip + caret placement so it never clips the calendar edges. */
+function tipPlacement(row: number, col: number) {
+  const below = row < 2; // top two rows → drop the tooltip below the cell
+  const vert = below ? "top-full mt-2" : "bottom-full mb-2";
+  let horiz = "left-1/2 -translate-x-1/2";
+  let caretX = "left-1/2 -translate-x-1/2";
+  if (col <= 1) {
+    horiz = "left-0";
+    caretX = "left-5";
+  } else if (col >= 5) {
+    horiz = "right-0";
+    caretX = "right-5";
+  }
+  const caretY = below ? "-top-1 border-l border-t" : "-bottom-1 border-r border-b";
+  return { wrap: `${vert} ${horiz}`, caret: `${caretX} ${caretY}` };
 }
 
 export default function Calendar({
@@ -91,6 +108,11 @@ export default function Calendar({
     return Array.from({ length: count }, (_, i) => addDays(gridStart, i));
   }, [anchor]);
 
+  const todayWeekKey = useMemo(
+    () => toISODate(mondayOf(parseISODate(today))),
+    [today]
+  );
+
   function step(delta: number) {
     setDir(delta);
     onAnchorChange(
@@ -121,22 +143,23 @@ export default function Calendar({
       : `w-${toISODate(weekStart)}`;
 
   const navBtn =
-    "flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-crescent-300 hover:text-crescent-700";
+    "flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition duration-200 hover:border-crescent-300 hover:bg-white hover:text-crescent-700 md:h-7 md:w-7";
 
   return (
     <section
       aria-label="Events calendar"
-      className="rounded-card border border-slate-200 bg-white p-4 sm:p-5"
+      className="rounded-card border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-3 sm:p-4"
     >
       {/* Header: title + view toggle + navigation */}
-      <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h3 className="text-lg font-bold tracking-tight text-crescent-800 sm:text-xl">
+      <div className="mb-2.5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h3 className="text-base font-bold tracking-tight text-crescent-800 sm:text-lg">
           {title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {/* iOS-style segmented control with a sliding thumb */}
           <div
-            className="inline-flex rounded-full bg-slate-100 p-0.5"
+            className="relative inline-flex rounded-full bg-slate-100 p-0.5"
             role="group"
             aria-label="Calendar view"
           >
@@ -146,13 +169,18 @@ export default function Calendar({
                 type="button"
                 aria-pressed={view === v}
                 onClick={() => onViewChange(v)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
-                  view === v
-                    ? "bg-white text-crescent-700 shadow-sm"
-                    : "text-slate-500 hover:text-slate-700"
+                className={`relative rounded-full px-3 py-1 text-[0.7rem] font-semibold capitalize transition-colors duration-200 ${
+                  view === v ? "text-crescent-700" : "text-slate-500 hover:text-slate-700"
                 }`}
               >
-                {v}
+                {view === v && (
+                  <motion.span
+                    layoutId="calViewThumb"
+                    className="absolute inset-0 rounded-full bg-white shadow-sm"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )}
+                <span className="relative">{v}</span>
               </button>
             ))}
           </div>
@@ -171,7 +199,7 @@ export default function Calendar({
             <button
               type="button"
               onClick={goToday}
-              className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600 transition-colors hover:border-crescent-300 hover:text-crescent-700"
+              className="rounded-full border border-slate-200 px-3 py-1.5 text-[0.7rem] font-semibold text-slate-600 transition duration-200 hover:border-crescent-300 hover:bg-white hover:text-crescent-700 md:py-1"
             >
               Today
             </button>
@@ -189,14 +217,17 @@ export default function Calendar({
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200">
+      {/* overflow-visible so day tooltips are never clipped by the container */}
+      <div className="overflow-visible rounded-xl border border-slate-200 bg-white">
         {/* Weekday header (month + desktop week grid) */}
         {(view === "month" || !isMobile) && (
-          <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50/70">
-            {WEEKDAYS.map((w) => (
+          <div className="grid grid-cols-7 rounded-t-xl border-b border-slate-200 bg-slate-50/80">
+            {WEEKDAYS.map((w, i) => (
               <div
                 key={w}
-                className="px-1 py-2 text-center text-[0.65rem] font-semibold uppercase tracking-wide text-slate-400"
+                className={`px-1 py-1.5 text-center text-[0.6rem] font-semibold uppercase tracking-wide text-slate-400 ${
+                  i >= 5 ? "bg-slate-100/70" : ""
+                }`}
               >
                 <span className="hidden sm:inline">{w}</span>
                 <span className="sm:hidden">{w[0]}</span>
@@ -209,10 +240,10 @@ export default function Calendar({
           <motion.div
             key={bodyKey}
             custom={dir}
-            initial={{ opacity: 0, x: dir === 0 ? 0 : dir > 0 ? 44 : -44 }}
+            initial={{ opacity: 0, x: dir === 0 ? 0 : dir > 0 ? 40 : -40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: dir > 0 ? -44 : 44 }}
-            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, x: dir > 0 ? -40 : 40 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
             drag={isMobile ? "x" : false}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.16}
@@ -223,19 +254,47 @@ export default function Calendar({
           >
             {view === "month" ? (
               <div className="grid grid-cols-7 divide-x divide-y divide-slate-100">
-                {monthDays.map((d) => {
+                {monthDays.map((d, i) => {
                   const iso = toISODate(d);
+                  const col = i % 7;
+                  const row = Math.floor(i / 7);
                   const inMonth = d.getMonth() === anchor.getMonth();
+                  const isWeekend = col >= 5;
+                  const isCurrentWeek =
+                    toISODate(mondayOf(d)) === todayWeekKey;
                   const dayEvents = eventsByDay.get(iso) ?? [];
                   const isToday = iso === today;
                   const isSelected = iso === selectedDay;
                   const clickable = dayEvents.length > 0;
 
+                  const cellBg = isCurrentWeek
+                    ? "bg-crescent-50/50"
+                    : !inMonth
+                      ? "bg-slate-50/50"
+                      : isWeekend
+                        ? "bg-slate-50/50"
+                        : "bg-white";
+
+                  const numberStyle =
+                    isSelected && isToday
+                      ? "bg-accent-500 text-white ring-2 ring-crescent-600 ring-offset-1"
+                      : isSelected
+                        ? "bg-accent-500 text-white"
+                        : isToday
+                          ? "bg-crescent-700 text-white"
+                          : inMonth
+                            ? "font-semibold text-slate-800"
+                            : "font-normal text-slate-300";
+
+                  const tip = tipPlacement(row, col);
+
                   return (
-                    <div key={iso} className="relative">
-                      <button
+                    <div key={iso} className={`relative ${cellBg}`}>
+                      <motion.button
                         type="button"
                         disabled={!clickable}
+                        whileTap={clickable ? { scale: 0.95 } : undefined}
+                        transition={{ duration: 0.15 }}
                         onClick={() => onSelectDay(isSelected ? null : iso)}
                         onMouseEnter={() => setHovered(iso)}
                         onMouseLeave={() =>
@@ -249,38 +308,26 @@ export default function Calendar({
                         })} — ${dayEvents.length} event${
                           dayEvents.length === 1 ? "" : "s"
                         }`}
-                        className={`flex h-full min-h-[3.5rem] w-full flex-col items-start gap-1 p-1.5 text-left transition-colors md:min-h-[6rem] md:p-2 ${
+                        className={`flex h-full min-h-[3.5rem] w-full flex-col items-center gap-1 p-1 transition-colors duration-200 md:min-h-[5rem] md:p-1.5 ${
                           clickable
-                            ? "cursor-pointer hover:bg-crescent-50/60"
+                            ? "cursor-pointer hover:bg-crescent-50"
                             : "cursor-default"
-                        } ${!inMonth ? "bg-slate-50/60" : ""}`}
+                        }`}
                       >
                         <span
-                          className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold md:h-7 md:w-7 md:text-sm ${
-                            isToday
-                              ? "bg-crescent-700 text-white"
-                              : isSelected
-                                ? "bg-accent-500 text-white"
-                                : inMonth
-                                  ? "text-slate-700"
-                                  : "text-slate-300"
-                          } ${
-                            isSelected && isToday
-                              ? "ring-2 ring-accent-500 ring-offset-1"
-                              : ""
-                          }`}
+                          className={`flex h-6 w-6 items-center justify-center rounded-full text-[0.7rem] transition-colors duration-200 md:h-7 md:w-7 md:text-xs ${numberStyle}`}
                         >
                           {d.getDate()}
                         </span>
 
                         {dayEvents.length > 0 && (
-                          <span className="mt-auto flex flex-wrap items-center gap-1">
+                          <span className="flex flex-wrap items-center justify-center gap-0.5 md:gap-1">
                             {dayEvents.slice(0, 3).map((e) => (
                               <span
                                 key={e.id}
-                                className={`h-1.5 w-1.5 rounded-full ${catDot(
+                                className={`h-2 w-2 rounded-full ${catDot(
                                   e.category
-                                )}`}
+                                )} ${catGlow(e.category)}`}
                               />
                             ))}
                             {dayEvents.length > 3 && (
@@ -290,10 +337,15 @@ export default function Calendar({
                             )}
                           </span>
                         )}
-                      </button>
+                      </motion.button>
 
                       {hovered === iso && dayEvents.length > 0 && (
-                        <div className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-1.5 hidden w-52 -translate-x-1/2 rounded-lg border border-slate-200 bg-white p-2.5 text-left shadow-lg md:block">
+                        <div
+                          className={`pointer-events-none absolute z-40 hidden w-52 rounded-xl border border-slate-200 bg-white p-3 text-left shadow-xl md:block ${tip.wrap}`}
+                        >
+                          <span
+                            className={`absolute h-2 w-2 rotate-45 border-slate-200 bg-white ${tip.caret}`}
+                          />
                           <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-slate-400">
                             {d.toLocaleDateString("en-IN", {
                               weekday: "short",
@@ -301,7 +353,7 @@ export default function Calendar({
                               month: "short",
                             })}
                           </p>
-                          <ul className="mt-1 space-y-1">
+                          <ul className="mt-1.5 space-y-1">
                             {dayEvents.slice(0, 5).map((e) => (
                               <li
                                 key={e.id}
@@ -339,15 +391,13 @@ export default function Calendar({
                     return (
                       <div
                         key={iso}
-                        className="flex min-h-[13rem] flex-col overflow-hidden rounded-xl border border-slate-200"
+                        className="flex min-h-[11rem] flex-col overflow-hidden rounded-xl border border-slate-200"
                       >
                         <button
                           type="button"
                           disabled={dayEvents.length === 0}
-                          onClick={() =>
-                            onSelectDay(isSelected ? null : iso)
-                          }
-                          className={`flex items-center justify-between px-2.5 py-2 text-left transition-colors ${
+                          onClick={() => onSelectDay(isSelected ? null : iso)}
+                          className={`flex items-center justify-between px-2.5 py-2 text-left transition-colors duration-200 ${
                             isSelected
                               ? "bg-accent-500 text-white"
                               : isToday
@@ -403,10 +453,10 @@ export default function Calendar({
                           type="button"
                           disabled={dayEvents.length === 0}
                           onClick={() => onSelectDay(isSelected ? null : iso)}
-                          className="flex w-full items-center gap-2 text-left"
+                          className="flex min-h-[44px] w-full items-center gap-2 text-left"
                         >
                           <span
-                            className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${
+                            className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-colors duration-200 ${
                               isSelected
                                 ? "bg-accent-500 text-white"
                                 : isToday
@@ -427,11 +477,11 @@ export default function Calendar({
                           </span>
                         </button>
                         {dayEvents.length === 0 ? (
-                          <p className="mt-2 pl-9 text-xs text-slate-400">
+                          <p className="mt-2 pl-10 text-xs text-slate-400">
                             No events
                           </p>
                         ) : (
-                          <ul className="mt-2 space-y-1.5 pl-9">
+                          <ul className="mt-2 space-y-1.5 pl-10">
                             {dayEvents.map((e) => (
                               <li
                                 key={e.id}
