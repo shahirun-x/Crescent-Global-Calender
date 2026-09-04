@@ -30,6 +30,16 @@ export default function InstitutionCard({ inst }: { inst: Institution }) {
         <p className="mt-1 text-sm font-medium text-slate-500">
           {inst.location}
         </p>
+        {inst.parent_org && (
+          <p className="mt-2">
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-500">
+              <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor" aria-hidden>
+                <path d="M12 3 2 8v2h20V8L12 3ZM4 12v7H2v2h20v-2h-2v-7h-2v7h-3v-7h-2v7h-2v-7H9v7H6v-7H4Z" />
+              </svg>
+              {inst.parent_org}
+            </span>
+          </p>
+        )}
         <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
           {inst.description}
         </p>

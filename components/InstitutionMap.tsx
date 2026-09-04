@@ -102,6 +102,9 @@ function PopupCard({ inst }: { inst: Institution }) {
         {inst.city}
         {inst.established_year ? ` · Est. ${inst.established_year}` : ""}
       </p>
+      {inst.parent_org && (
+        <p className="mt-0.5 text-[0.7rem] text-slate-400">{inst.parent_org}</p>
+      )}
       <span
         className="mt-1.5 inline-block rounded-full px-2 py-0.5 text-[0.65rem] font-semibold capitalize text-white"
         style={{ background: institutionCategoryStyle[inst.category].hex }}

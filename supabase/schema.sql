@@ -20,9 +20,13 @@ create table if not exists public.institutions (
   logo_url        text,
   latitude        double precision,
   longitude       double precision,
+  parent_org      text,
   sort_order      integer not null default 0,
   created_at      timestamptz not null default now()
 );
+
+-- For databases created before parent_org was added.
+alter table public.institutions add column if not exists parent_org text;
 
 -- ---------------------------------------------------------------------------
 -- events

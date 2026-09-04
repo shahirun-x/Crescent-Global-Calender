@@ -23,6 +23,8 @@ export interface Institution {
   logo_url: string | null;
   latitude: number | null;
   longitude: number | null;
+  /** Governing trust / foundation, per the official directory. */
+  parent_org: string;
   sort_order: number;
 }
 

@@ -19,32 +19,36 @@ import type {
 export const INSTITUTIONS: Institution[] = [
   {
     id: "crescent-residential-boys-school",
-    name: "Crescent Residential Boys Matriculation School",
-    location: "Seethakathi Nagar, Chennai",
+    name: "Crescent Residential Matriculation Higher Secondary Boys School",
+    location:
+      "Seethakathi Estate, GST Road, Vandalur, Chennai – 600 048",
     city: "Chennai",
-    established_year: 1967,
+    established_year: 1968,
     category: "education",
     description:
-      "The founding institution of the Crescent movement — a residential matriculation school in Chennai that has shaped generations of students since 1967.",
-    external_url: "https://www.crescentschools.edu.in", // TODO verify
+      "The founding institution of the Crescent movement — started in Chetpet in 1968 and moved to the Vandalur campus in 1971. Still primarily a residential boys school, co-educational for day scholars since 2019.",
+    external_url: "https://crescentschool.net",
     logo_url: null,
-    latitude: 13.0475,
-    longitude: 80.209,
+    latitude: 12.8229,
+    longitude: 80.0422,
+    parent_org: "Seethakathi Trust",
     sort_order: 1,
   },
   {
     id: "crescent-girls-school",
-    name: "Crescent Girls Matriculation School",
-    location: "Chennai",
+    name: "Crescent Matriculation Higher Secondary School for Girls",
+    location:
+      "24, Dr. S.S. Badrinath Road (formerly Pycrofts Garden Road), Nungambakkam, Chennai – 600 006",
     city: "Chennai",
     established_year: 1976,
     category: "education",
     description:
-      "A matriculation school for girls in Chennai, extending the Crescent commitment to accessible, values-based education for young women.",
-    external_url: "https://www.crescentschools.edu.in", // TODO verify
+      "A matriculation higher secondary school for girls in Nungambakkam, Chennai, extending the Crescent commitment to accessible, values-based education for young women.",
+    external_url: "https://crescentgirlsschool.com",
     logo_url: null,
-    latitude: 13.048,
-    longitude: 80.2085,
+    latitude: 13.0627,
+    longitude: 80.2455,
+    parent_org: "Seethakathi Trust",
     sort_order: 2,
   },
   {
@@ -60,6 +64,7 @@ export const INSTITUTIONS: Institution[] = [
     logo_url: null,
     latitude: 12.8231,
     longitude: 80.0424,
+    parent_org: "Seethakathi Trust",
     sort_order: 3,
   },
   {
@@ -75,21 +80,24 @@ export const INSTITUTIONS: Institution[] = [
     logo_url: null,
     latitude: 12.8235,
     longitude: 80.0428,
+    parent_org: "Seethakathi Trust",
     sort_order: 4,
   },
   {
     id: "tbak-college-women",
     name: "Thassim Beevi Abdul Kader College for Women",
-    location: "Kilakarai, Ramanathapuram",
+    location:
+      "8/93, 94, Yousuf Zulaikha Hospital Road, Kilakarai – 623 517",
     city: "Kilakarai",
     established_year: 1988,
     category: "education",
     description:
-      "An arts and science college for women in the coastal town of Kilakarai, widening access to higher education in the Ramanathapuram region.",
-    external_url: "https://tbak.ac.in", // TODO verify
+      "An arts and science college for women in Kilakarai — autonomous since 2005–06, NAAC 'A' grade, affiliated to Alagappa University — widening access to higher education in the Ramanathapuram region.",
+    external_url: "https://thassim.ac.in",
     logo_url: null,
     latitude: 9.2312,
     longitude: 78.7834,
+    parent_org: "Seethakathi Trust",
     sort_order: 5,
   },
   {
@@ -101,25 +109,27 @@ export const INSTITUTIONS: Institution[] = [
     category: "education",
     description:
       "A CBSE school in Kilakarai providing structured, English-medium schooling to children across the region.",
-    external_url: "", // no standalone website — run by the Seethakathi Trust
+    external_url: "", // no standalone website — search fallback
     logo_url: null,
     latitude: 9.232,
     longitude: 78.784,
+    parent_org: "Seethakathi Trust",
     sort_order: 6,
   },
   {
     id: "yousuf-zulaikha-hospital",
-    name: "Yousuf Zulaikha Hospital",
+    name: "Yousuf Zulaikha Medical Centre",
     location: "Kilakarai, Ramanathapuram",
     city: "Kilakarai",
     established_year: 1987,
     category: "healthcare",
     description:
-      "A multi-speciality hospital serving Kilakarai and surrounding villages, part of the Crescent commitment to community healthcare.",
+      "A medical centre serving Kilakarai and surrounding villages, part of the Crescent commitment to community healthcare.",
     external_url: "", // no official website — search fallback
     logo_url: null,
     latitude: 9.2315,
     longitude: 78.783,
+    parent_org: "Seethakathi Trust",
     sort_order: 7,
   },
   {
@@ -135,81 +145,90 @@ export const INSTITUTIONS: Institution[] = [
     logo_url: null,
     latitude: 12.824,
     longitude: 80.043,
+    parent_org: "Seethakathi Trust",
     sort_order: 8,
   },
   {
     id: "crescent-college-education-madurai",
-    name: "Crescent College of Education",
-    location: "Madurai",
+    name: "Crescent College of Education for Women",
+    location:
+      "Seethakathi Nagar, Natham-Alagar Koil Link Road, Kallampatti, Chathrapatti Post, Madurai – 625 014",
     city: "Madurai",
     established_year: 2005,
     category: "education",
     description:
-      "A teacher-education college in Madurai preparing qualified educators for schools across Tamil Nadu.",
-    external_url: "https://crescentcollegeofeducation.in",
+      "A teacher-education college for women in Madurai, preparing qualified educators for schools across Tamil Nadu.",
+    external_url: "http://www.crescentcollegeofeducationforwomen.org",
     logo_url: null,
     latitude: 9.9252,
     longitude: 78.1198,
+    parent_org: "All India Islamic Foundation",
     sort_order: 9,
   },
   {
     id: "crescent-yz-school-nursing-madurai",
-    name: "Crescent Yousuf Zulaikha School of Nursing",
-    location: "Madurai",
+    name: "Crescent Yousuf Zulaikha School of Nursing & Research Institute",
+    location:
+      "Seethakathi Nagar, Natham–Alagarkoil Link Road, Kallampatti, Chathrapatti P.O., Madurai – 625 014",
     city: "Madurai",
     established_year: 2008,
     category: "healthcare",
     description:
-      "A nursing school in Madurai training healthcare professionals for hospitals and community health programmes.",
+      "A nursing school and research institute in Madurai training healthcare professionals for hospitals and community health programmes.",
     external_url: "https://crescentschoolofnursing.in",
     logo_url: null,
     latitude: 9.926,
     longitude: 78.1195,
+    parent_org: "All India Islamic Foundation",
     sort_order: 10,
   },
   {
     id: "buhari-aalim-arabic-college",
-    name: "Buhari Aalim Arabic College",
-    location: "Chennai",
+    name: "Kilakarai Bukhari Aalim Arabic College",
+    location:
+      "Crescent Campus, G.S.T. Road, Vandalur, Chennai – 600 048",
     city: "Chennai",
-    established_year: null,
+    established_year: 2000,
     category: "education",
     description:
-      "An Arabic and Islamic studies college in Chennai offering the traditional Aalim course alongside modern subjects.",
-    external_url: "http://albukhari.in",
+      "An Arabic and Islamic studies college on the Vandalur campus (its name recalls its Kilakarai roots) offering the traditional Aalim course alongside modern subjects.",
+    external_url: "http://www.bukhariarabiccollege.com",
     logo_url: null,
-    latitude: 13.047,
-    longitude: 80.2095,
+    latitude: 12.8233,
+    longitude: 80.0426,
+    parent_org: "All India Islamic Foundation",
     sort_order: 11,
   },
   {
     id: "madurai-crescent-school",
-    name: "Madurai Crescent School",
-    location: "Madurai",
+    name: "Madurai Crescent Matriculation Higher Secondary School for Girls",
+    location: "Seethakathi Nagar, Kallampatti, Madurai – 625 014",
     city: "Madurai",
     established_year: null,
     category: "education",
     description:
-      "A Crescent school serving families in and around Madurai with a broad, activity-rich curriculum.",
-    external_url: "", // no dedicated website — search fallback
+      "A matriculation higher secondary school for girls serving families in and around Madurai with a broad, activity-rich curriculum.",
+    external_url: "http://matric.crescentcampus.in",
     logo_url: null,
     latitude: 9.9255,
     longitude: 78.12,
+    parent_org: "All India Islamic Foundation",
     sort_order: 12,
   },
   {
     id: "nagore-crescent-school",
-    name: "Nagore Crescent School",
-    location: "Nagore, Nagapattinam",
+    name: "Nagore Crescent Matriculation Higher Secondary School for Girls",
+    location: "Samba Thottam, Mudukku Thazhai Lane, Nagore – 611 002",
     city: "Nagore",
-    established_year: null,
+    established_year: 1991,
     category: "education",
     description:
-      "A Crescent school in the coastal town of Nagore, extending the network's reach along the Coromandel coast.",
-    external_url: "", // no dedicated website — search fallback
+      "A matriculation higher secondary school for girls in the coastal town of Nagore, extending the network's reach along the Coromandel coast.",
+    external_url: "http://crescentcampus.in/ctt",
     logo_url: null,
     latitude: 10.824,
     longitude: 79.842,
+    parent_org: "All India Islamic Foundation",
     sort_order: 13,
   },
   {
@@ -225,22 +244,41 @@ export const INSTITUTIONS: Institution[] = [
     logo_url: null,
     latitude: 9.2318,
     longitude: 78.7838,
+    parent_org: "Seethakathi Trust",
     sort_order: 14,
   },
   {
     id: "childrens-homes-community-initiatives",
-    name: "Children's Homes & Community Initiatives",
-    location: "Multiple locations across Tamil Nadu",
-    city: "Multiple",
+    name: "Al Mumin KTMS Hamid Sahib Children Home for Girls",
+    location: "Madurai",
+    city: "Madurai",
     established_year: null,
     category: "community",
     description:
-      "Residential children's homes, orphan care, scholarships and welfare programmes run under the Crescent umbrella for underprivileged families.",
-    external_url: "", // umbrella of programmes — no single website
+      "A residential children's home for girls in Madurai, providing care, schooling support and a stable home for underprivileged children.",
+    external_url: "", // no official website — search fallback
     logo_url: null,
-    latitude: 9.2325,
-    longitude: 78.7845,
+    latitude: 9.9258,
+    longitude: 78.1196,
+    parent_org: "All India Islamic Foundation",
     sort_order: 15,
+  },
+  {
+    id: "crescent-teachers-training-institute-women",
+    name: "Crescent Teachers Training Institute for Women",
+    location:
+      "Seethakathi Nagar, Natham-Alagar Koil Link Road, Kallampatti, Chathrapatti Post, Madurai – 625 014",
+    city: "Madurai",
+    established_year: null,
+    category: "education",
+    description:
+      "Teacher training institute for women, preparing the next generation of educators with modern pedagogy and strong values.",
+    external_url: "http://crescentcampus.in/ctt",
+    logo_url: null,
+    latitude: 9.9257,
+    longitude: 78.1197,
+    parent_org: "All India Islamic Foundation",
+    sort_order: 16,
   },
 ];
 
@@ -355,7 +393,7 @@ export const EVENTS: CrescentEvent[] = [
     date_start: iso("2026-09-14"),
     date_end: null,
     institution_id: "yousuf-zulaikha-hospital",
-    institution_name: "Yousuf Zulaikha Hospital",
+    institution_name: "Yousuf Zulaikha Medical Centre",
     category: "Healthcare",
     location: "Kilakarai, Ramanathapuram",
     description:
@@ -394,7 +432,8 @@ export const EVENTS: CrescentEvent[] = [
     date_start: iso("2026-09-01"),
     date_end: null,
     institution_id: "crescent-yz-school-nursing-madurai",
-    institution_name: "Crescent Yousuf Zulaikha School of Nursing",
+    institution_name:
+      "Crescent Yousuf Zulaikha School of Nursing & Research Institute",
     category: "Healthcare",
     location: "Madurai",
     description:
@@ -407,7 +446,7 @@ export const EVENTS: CrescentEvent[] = [
     date_start: iso("2026-10-25"),
     date_end: null,
     institution_id: "crescent-college-education-madurai",
-    institution_name: "Crescent College of Education",
+    institution_name: "Crescent College of Education for Women",
     category: "Schools",
     location: "Madurai",
     description:
@@ -420,11 +459,11 @@ export const EVENTS: CrescentEvent[] = [
     date_start: iso("2027-02-20"),
     date_end: iso("2027-03-20"),
     institution_id: "childrens-homes-community-initiatives",
-    institution_name: "Children's Homes & Community Initiatives",
+    institution_name: "Al Mumin KTMS Hamid Sahib Children Home for Girls",
     category: "Community",
-    location: "Multiple locations",
+    location: "Madurai",
     description:
-      "Ration kits, scholarships and support for families served by the Crescent children's homes.",
+      "Ration kits, scholarships and support for the children of the Al Mumin home and other families across the network.",
     is_featured: false,
   },
   {
@@ -481,13 +520,13 @@ export const NEWS: NewsItem[] = [
   },
   {
     id: "news-yz-hospital-camp",
-    title: "Yousuf Zulaikha Hospital treats 1,200 at coastal health camp",
+    title: "Yousuf Zulaikha Medical Centre treats 1,200 at coastal health camp",
     summary:
       "A weekend screening drive in Kilakarai reached fishing families with free diagnostics and medicines.",
     content:
-      "Yousuf Zulaikha Hospital ran a large community health camp covering general medicine, paediatrics and eye care, supported by volunteers from the Crescent nursing school in Madurai.",
+      "Yousuf Zulaikha Medical Centre ran a large community health camp covering general medicine, paediatrics and eye care, supported by volunteers from the Crescent nursing school in Madurai.",
     institution_id: "yousuf-zulaikha-hospital",
-    institution_name: "Yousuf Zulaikha Hospital",
+    institution_name: "Yousuf Zulaikha Medical Centre",
     published_at: iso("2026-07-28"),
     image_url: null,
   },
