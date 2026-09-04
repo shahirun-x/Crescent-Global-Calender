@@ -86,7 +86,7 @@ export default async function HomePage() {
         <div className="container-page">
           <SectionHeading
             eyebrow="Our Journey"
-            title="From one school in 1967 to a global network"
+            title="From one school in 1968 to a global network"
             description="Five decades of steady growth across Tamil Nadu — and, through alumni, far beyond it."
           />
           <div className="mt-12 max-w-3xl">

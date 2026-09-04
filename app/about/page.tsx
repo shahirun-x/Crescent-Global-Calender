@@ -48,7 +48,7 @@ export default async function AboutPage() {
         <section className="mt-14">
           <h2 className="text-xl font-bold text-crescent-800">Our journey</h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-            From a single residential school in Chennai in 1967 to a network of
+            From a single residential school in Chennai in 1968 to a network of
             schools, colleges, a university, hospitals and community initiatives
             across Tamil Nadu — and, through its alumni, around the world.
           </p>

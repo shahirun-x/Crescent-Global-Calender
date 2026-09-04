@@ -73,7 +73,7 @@ export default function Hero() {
 
         <ul className="grid grid-cols-2 gap-4 text-sm">
           {[
-            { k: "1967", v: "Founded in Chennai" },
+            { k: "1968", v: "Founded in Chennai" },
             { k: "16+", v: "Institutions in the network" },
             { k: "5", v: "Ecosystem pillars" },
             { k: "Global", v: "Alumni across continents" },

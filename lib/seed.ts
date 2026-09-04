@@ -284,16 +284,22 @@ export const INSTITUTIONS: Institution[] = [
 
 export const TIMELINE: TimelineEntry[] = [
   {
-    year: 1967,
+    year: 1968,
     title: "The first Crescent school",
     description:
-      "Crescent Residential Boys Matriculation School opens in Chennai, founded on the belief that education is the surest route to community upliftment.",
+      "Crescent Residential Matriculation Higher Secondary Boys School opens in Chetpet, Chennai, sponsored by the Seethakathi Trust. Founded by Alhaj B.S. Abdur Rahman.",
+  },
+  {
+    year: 1971,
+    title: "A permanent home in Vandalur",
+    description:
+      "The school moves to its permanent home at the Seethakathi Estate, GST Road, Vandalur, Chennai — the campus that would grow into the heart of the Crescent ecosystem.",
   },
   {
     year: 1976,
     title: "Education for girls",
     description:
-      "Crescent Girls Matriculation School is established in Chennai, opening the same opportunities to young women.",
+      "Crescent Matriculation Higher Secondary School for Girls is established in Nungambakkam, Chennai, opening the same opportunities to young women.",
   },
   {
     year: 1984,
