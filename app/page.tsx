@@ -5,6 +5,7 @@ import EventsStrip from "@/components/EventsStrip";
 import Timeline from "@/components/Timeline";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import Pipeline from "@/components/Pipeline";
 import InstitutionMapCard from "@/components/InstitutionMapCard";
 import { getEvents, getInstitutions, getTimeline } from "@/lib/data";
 
@@ -41,6 +42,29 @@ export default async function HomePage() {
       <Hero />
 
       <EcosystemGrid institutions={institutions} />
+
+      <section className="border-t border-slate-200 bg-slate-50 py-20">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="The CGOM Pipeline"
+            title="From classroom learning to global entrepreneurial impact"
+            description="A structured School-to-Start-up continuum — the backbone of the Crescent Global Outreach Mission."
+          />
+          <div className="mt-12 rounded-card border border-slate-200 bg-white p-6 sm:p-10">
+            <Pipeline />
+          </div>
+          <p className="mt-6 text-sm font-medium text-slate-600">
+            A continuous pathway from classroom learning to global entrepreneurial
+            impact.
+          </p>
+          <Link
+            href="/about#strategic-streams"
+            className="mt-4 inline-flex rounded-full border border-crescent-300 px-4 py-2 text-sm font-semibold text-crescent-700 transition-colors hover:bg-crescent-50"
+          >
+            See the three strategic streams →
+          </Link>
+        </div>
+      </section>
 
       <section className="border-t border-slate-200 bg-white py-20">
         <div className="container-page">

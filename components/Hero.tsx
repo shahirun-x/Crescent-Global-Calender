@@ -39,8 +39,12 @@ export default function Hero() {
       {/* z-20: content */}
       <div className="container-page relative z-20 grid gap-10 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div>
-          <p className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
+          <p className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
             The Crescent ecosystem, unified
+          </p>
+          <p className="mb-4 mt-3 max-w-lg text-sm font-medium text-crescent-100">
+            A structured School-to-Start-up continuum — from Learning to
+            Leadership, from Knowledge to Innovation.
           </p>
           <h1 className="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
             One Crescent.
@@ -50,10 +54,10 @@ export default function Hero() {
             <span className="text-crescent-200">One Global Network.</span>
           </h1>
           <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-crescent-100">
-            A single portal that connects the schools, colleges, university,
-            hospitals and community initiatives of the Crescent family — helping
-            channel their collective efforts for the betterment of the alma
-            mater.
+            A unified academic ecosystem connecting schools, colleges,
+            university, hospitals and community initiatives of the Crescent
+            family — channelling their collective efforts into education,
+            innovation, entrepreneurship and global impact.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link

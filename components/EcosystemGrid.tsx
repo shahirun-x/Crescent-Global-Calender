@@ -34,29 +34,40 @@ export default function EcosystemGrid({
       />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {order.map((cat, idx) => (
-          <Reveal key={cat} delay={idx * 0.06} as="article">
-            <Link
-              href={`/institutions?category=${cat}`}
-              className={`group flex h-full flex-col rounded-card border border-slate-200 p-6 transition-all hover:-translate-y-0.5 hover:border-crescent-300 hover:shadow-lg hover:shadow-crescent-900/5 ${institutionCategoryStyle[cat].cardGradient}`}
-            >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-crescent-50 text-crescent-700">
-                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
-                  <path d={icons[cat]} />
-                </svg>
-              </span>
-              <h3 className="mt-4 text-lg font-semibold text-crescent-800">
-                {categoryMeta[cat].label}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                {categoryMeta[cat].blurb}
-              </p>
-              <p className="mt-4 text-sm font-semibold text-crescent-600 group-hover:text-crescent-700">
-                {counts[cat] ?? 0} institution{(counts[cat] ?? 0) === 1 ? "" : "s"} →
-              </p>
-            </Link>
-          </Reveal>
-        ))}
+        {order.map((cat, idx) => {
+          const isStrategic = cat === "innovation";
+          return (
+            <Reveal key={cat} delay={idx * 0.06} as="article">
+              <Link
+                href={
+                  isStrategic
+                    ? "/about#strategic-streams"
+                    : `/institutions?category=${cat}`
+                }
+                className={`group flex h-full flex-col rounded-card border border-slate-200 p-6 transition-all hover:-translate-y-0.5 hover:border-crescent-300 hover:shadow-lg hover:shadow-crescent-900/5 ${institutionCategoryStyle[cat].cardGradient}`}
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-crescent-50 text-crescent-700">
+                  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
+                    <path d={icons[cat]} />
+                  </svg>
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-crescent-800">
+                  {categoryMeta[cat].label}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                  {categoryMeta[cat].blurb}
+                </p>
+                <p className="mt-4 text-sm font-semibold text-crescent-600 group-hover:text-crescent-700">
+                  {isStrategic
+                    ? "Explore the strategic streams →"
+                    : `${counts[cat] ?? 0} institution${
+                        (counts[cat] ?? 0) === 1 ? "" : "s"
+                      } →`}
+                </p>
+              </Link>
+            </Reveal>
+          );
+        })}
 
         <Reveal delay={order.length * 0.06} as="article">
           <Link

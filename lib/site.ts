@@ -37,7 +37,7 @@ export const nav = [
   { href: "/calendar", label: "Central Calendar" },
   { href: "/news", label: "News & Events" },
   { href: "/connect", label: "Crescent Connect" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About CGOM" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -98,8 +98,9 @@ export const categoryMeta: Record<
     blurb: "Children's homes, welfare programmes and outreach for underprivileged families.",
   },
   innovation: {
-    label: "Innovation",
-    blurb: "Incubation, research and enterprise support for students and alumni.",
+    label: "Research & Innovation",
+    blurb:
+      "Cross-institutional research capabilities, shared centres of excellence, and a common innovation pipeline from ideas to global commercialization.",
   },
 };
 
