@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import MotionProvider from "@/components/MotionProvider";
 import Navbar from "@/components/Navbar";
@@ -69,6 +70,7 @@ export default function RootLayout({
           <Footer />
         </MotionProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
