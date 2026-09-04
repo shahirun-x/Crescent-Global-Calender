@@ -5,17 +5,29 @@ import type { CrescentEvent, Institution, NewsItem, TimelineEntry } from "./type
 /**
  * Data-access layer. Every function tries Supabase first and transparently falls
  * back to the bundled seed data if Supabase is not configured or the query fails.
- * This keeps pages statically renderable and the site fully functional offline.
+ * A warning is logged on fallback so we know if the live connection breaks.
  */
+
+function warnFallback(table: string, error?: unknown) {
+  const msg = error instanceof Error ? error.message : String(error ?? "");
+  console.warn(
+    `[data] Falling back to seed data for "${table}"${msg ? `: ${msg}` : ""}`
+  );
+}
 
 export async function getInstitutions(): Promise<Institution[]> {
   const supabase = getSupabase();
   if (supabase) {
-    const { data, error } = await supabase
-      .from("institutions")
-      .select("*")
-      .order("sort_order", { ascending: true });
-    if (!error && data && data.length) return data as Institution[];
+    try {
+      const { data, error } = await supabase
+        .from("institutions")
+        .select("*")
+        .order("sort_order", { ascending: true });
+      if (!error && data && data.length) return data as Institution[];
+      if (error) warnFallback("institutions", error);
+    } catch (e) {
+      warnFallback("institutions", e);
+    }
   }
   return [...INSTITUTIONS].sort((a, b) => a.sort_order - b.sort_order);
 }
@@ -28,25 +40,30 @@ export async function getInstitutionMap(): Promise<Map<string, Institution>> {
 export async function getEvents(): Promise<CrescentEvent[]> {
   const supabase = getSupabase();
   if (supabase) {
-    const { data, error } = await supabase
-      .from("events")
-      .select(
-        "id, title, date_start, date_end, institution_id, category, location, description, is_featured, institutions(name)"
-      )
-      .order("date_start", { ascending: true });
-    if (!error && data && data.length) {
-      return (data as unknown as RawEvent[]).map((row) => ({
-        id: row.id,
-        title: row.title,
-        date_start: row.date_start,
-        date_end: row.date_end,
-        institution_id: row.institution_id,
-        institution_name: row.institutions?.name ?? "Crescent Network",
-        category: row.category,
-        location: row.location,
-        description: row.description,
-        is_featured: row.is_featured,
-      }));
+    try {
+      const { data, error } = await supabase
+        .from("events")
+        .select(
+          "id, title, date_start, date_end, institution_id, category, location, description, is_featured, institutions(name)"
+        )
+        .order("date_start", { ascending: true });
+      if (!error && data && data.length) {
+        return (data as unknown as RawEvent[]).map((row) => ({
+          id: row.id,
+          title: row.title,
+          date_start: row.date_start,
+          date_end: row.date_end,
+          institution_id: row.institution_id,
+          institution_name: row.institutions?.name ?? "Crescent Network",
+          category: row.category,
+          location: row.location,
+          description: row.description,
+          is_featured: row.is_featured,
+        }));
+      }
+      if (error) warnFallback("events", error);
+    } catch (e) {
+      warnFallback("events", e);
     }
   }
   return [...EVENTS].sort((a, b) => a.date_start.localeCompare(b.date_start));
@@ -55,23 +72,28 @@ export async function getEvents(): Promise<CrescentEvent[]> {
 export async function getNews(): Promise<NewsItem[]> {
   const supabase = getSupabase();
   if (supabase) {
-    const { data, error } = await supabase
-      .from("news")
-      .select(
-        "id, title, summary, content, institution_id, published_at, image_url, institutions(name)"
-      )
-      .order("published_at", { ascending: false });
-    if (!error && data && data.length) {
-      return (data as unknown as RawNews[]).map((row) => ({
-        id: row.id,
-        title: row.title,
-        summary: row.summary,
-        content: row.content,
-        institution_id: row.institution_id,
-        institution_name: row.institutions?.name ?? "Crescent Network",
-        published_at: row.published_at,
-        image_url: row.image_url,
-      }));
+    try {
+      const { data, error } = await supabase
+        .from("news")
+        .select(
+          "id, title, summary, content, institution_id, published_at, image_url, institutions(name)"
+        )
+        .order("published_at", { ascending: false });
+      if (!error && data && data.length) {
+        return (data as unknown as RawNews[]).map((row) => ({
+          id: row.id,
+          title: row.title,
+          summary: row.summary,
+          content: row.content,
+          institution_id: row.institution_id,
+          institution_name: row.institutions?.name ?? "Crescent Network",
+          published_at: row.published_at,
+          image_url: row.image_url,
+        }));
+      }
+      if (error) warnFallback("news", error);
+    } catch (e) {
+      warnFallback("news", e);
     }
   }
   return [...NEWS].sort((a, b) => b.published_at.localeCompare(a.published_at));
